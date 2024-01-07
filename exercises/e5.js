@@ -1,4 +1,6 @@
 
+import { bankAccounts } from "../data/data";
+
 // EXERCISE 5
 // Return an array of all bank account holders names
 // Array example: bankAccounts in /data/data.js
@@ -6,8 +8,19 @@
 
 export function getAllClientNames(array) {
   // Your code goes here...
+  let clients = []
+  for (let i = 0; i < array.length; i++) {
+    const account = array[i];
+    if (account.hasOwnProperty('name')) {
+      clients.push(account.name)
+    }
+  }
 
+  return clients;
 }
+
+getAllClientNames(bankAccounts);
+
 
 
 

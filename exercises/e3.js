@@ -9,9 +9,17 @@
  * */
 
 export function getAverage(array) {
-  // Your code goes here...
+  let sum = 0;
 
+  for (let i = 0; i < array.length; i++) {
+    sum += array[i];
+  }
+
+  return sum / array.length;
 }
+
+getAverage([20, 22, 24, 26]);
+
 
 
 /** 
@@ -22,11 +30,18 @@ export function getAverage(array) {
  * */ 
 
 export function getStringSum(str) {
-  // Your code goes here...
+  let sum = 0;
 
+  for (let i = 0; i < str.length; i++) {
+    if (!isNaN(str[i])) {
+      sum += parseInt(str[i], 10);
+    }
+  }
+  return sum;
 }
 
-
+getStringSum("GH2U87A")
+getStringSum("GHIUJUHSG")
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-3"
 // If the test has all tests passed, switch to the next exercise file

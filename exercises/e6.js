@@ -5,7 +5,14 @@
 
 export function getClientWithNoMoney(array) {
   // Your code goes here...
-
+  let client = []
+  for (let i = 0; i < array.length; i++) {
+    const account = array[i];
+    if (account.hasOwnProperty('balance') && account.balance === 0) {
+      client.push(account.name);
+    }
+  }
+  return client;
 }
 
 // === TEST YOURSELF ===

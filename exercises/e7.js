@@ -1,3 +1,4 @@
+import { bankAccounts, bankAccountsNoPositiveBalance } from "../data/data";
 // EXERCISE 7
 // Return an array with a bank account object with the lowest balance but not broke ( balance > 0 )
 // In case there is no account that has balance > 0 return an empty array
@@ -6,8 +7,26 @@
 
 export function getClientWithLeastPositiveBalance(array) {
   // Your code goes here...
-  
+  let leastBalance = null;
+  let minPositiveBalance = Infinity;
+  for (let i = 0; i < array.length; i++) {
+    const account = array[i];
+    if (account.hasOwnProperty('balance') && account.balance > 0) {
+      if (account.balance < minPositiveBalance) {
+        minPositiveBalance = account.balance;
+        leastBalance = account;
+      }
+    }
+  }
+
+  if (leastBalance !== null) {
+    return [leastBalance];
+  } else {
+    return [];
+  }
 }
+
+getClientWithLeastPositiveBalance(bankAccounts);
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-7"

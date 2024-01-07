@@ -4,10 +4,30 @@
 // Array example: bankAccounts in /data/data.js
 // getAllWithdrawals(bankAccounts) => [3432, 0, 43242.34, 0, 23432]
 
+import { bankAccounts } from "../data/data";
+
 export function getAllWithdrawals(array) {
-  // Your code goes here...
+  let withdrawals = [];
+  for (let i = 0; i < array.length; i++) {
+    const account = array[i];
+    if (account.hasOwnProperty('withdrawals') && Array.isArray(account.withdrawals)) {
+      const withdrawalArray = account.withdrawals;
+      let withdrawalSum = 0;
+      for (let i = 0; i < withdrawalArray.length; i++) {
+        withdrawalSum += withdrawalArray[i];
+      }
+      withdrawals.push(withdrawalSum);
+    } else {
+      withdrawals.push(0);
+    }
+  }
+
+  return withdrawals;
 
 }
+
+getAllWithdrawals(bankAccounts);
+console.log(getAllWithdrawals(bankAccounts));
 
 // === TEST YOURSELF ===
 // Once you're finished run the test with "npm run test-11"
